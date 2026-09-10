@@ -1,0 +1,6 @@
+{
+  "name": "Di Napoli Sorveteria & Cafeteria",
+  "description": "Tradição & Excelência Artesanal em Sorvetes, Gelatos e Cafés Especiais desde 1987.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
