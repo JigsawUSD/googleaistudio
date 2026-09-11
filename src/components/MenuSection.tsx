@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, Info, BookOpen, Flame, ArrowRight } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import { MenuItem } from '../types';
 import { MENU_ITEMS } from '../data/mockData';
 import { SpotlightCard } from './ui/SpotlightCard';
@@ -32,7 +32,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onOpenFullMenu }) => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8 border-b border-[#8c716f]/15 pb-8">
           <div>
             <span className="text-[#942225] font-semibold uppercase tracking-[0.3em] text-xs flex items-center gap-2 mb-3">
-              <Flame className="w-4 h-4 text-[#942225] animate-pulse" />
+              <GoogleIcon name="local_fire_department" filled weight={600} size={18} className="text-[#942225] animate-pulse" />
               Os queridinhos dos nossos clientes
             </span>
             <h2 className="font-serif text-4xl md:text-6xl text-[#251918] tracking-tight mb-2">
@@ -49,9 +49,9 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onOpenFullMenu }) => {
               onClick={onOpenFullMenu}
               className="w-full sm:w-auto bg-[#942225] hover:bg-[#78181b] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all transform hover:scale-105 shadow-xl shadow-[#942225]/20 flex items-center justify-center gap-3 cursor-pointer group"
             >
-              <BookOpen className="w-4 h-4" />
+              <GoogleIcon name="menu_book" filled weight={500} size={18} />
               <span>Acessar Cardápio Completo</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <GoogleIcon name="arrow_forward" weight={600} size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
@@ -89,7 +89,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onOpenFullMenu }) => {
                   {/* Optional Custom Item Badge */}
                   {item.badge && (
                     <div className="absolute top-14 left-4 bg-[#942225]/90 text-white text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
-                      <Sparkles className="w-2.5 h-2.5 text-white" />
+                      <GoogleIcon name="auto_awesome" filled size={12} className="text-white" />
                       {item.badge}
                     </div>
                   )}
@@ -115,7 +115,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onOpenFullMenu }) => {
                   {/* Footer Info inside Card with Subconscious Value Priming */}
                   <div className="pt-4 border-t border-[#8c716f]/10 flex items-center justify-between gap-2">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#942225] bg-[#ffe9e7] px-3 py-1 rounded-full flex items-center gap-1">
-                      <Sparkles className="w-2.5 h-2.5" />
+                      <GoogleIcon name="auto_awesome" filled size={12} />
                       Feito na Hora
                     </span>
                     <button
@@ -123,7 +123,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onOpenFullMenu }) => {
                       className="text-[10px] font-bold uppercase tracking-wider text-[#251918] hover:text-[#942225] bg-[#fff8f7] border border-[#8c716f]/20 hover:border-[#942225] px-3 py-1 rounded-full transition-colors flex items-center gap-1 cursor-pointer"
                     >
                       Ver Detalhes
-                      <ArrowRight className="w-2.5 h-2.5" />
+                      <GoogleIcon name="arrow_forward" size={12} />
                     </button>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onOpenFullMenu }) => {
             onClick={onOpenFullMenu}
             className="bg-[#251918] hover:bg-[#942225] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all transform hover:scale-105 flex items-center gap-3 shrink-0 cursor-pointer shadow-md"
           >
-            <BookOpen className="w-4 h-4" />
+            <GoogleIcon name="menu_book" filled size={18} />
             <span>Acessar Cardápio Completo</span>
           </button>
         </div>

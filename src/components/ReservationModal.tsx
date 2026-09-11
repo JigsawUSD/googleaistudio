@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { X, Calendar, Clock, Users, MapPin, CheckCircle } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import confetti from 'canvas-confetti';
 import { STORES } from '../data/mockData';
 
@@ -74,9 +74,9 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
         <div className="bg-[#251918] text-white p-6 md:p-8 relative">
           <button
             onClick={resetAndClose}
-            className="absolute top-6 right-6 text-white/70 hover:text-white p-1 rounded-full bg-white/10"
+            className="absolute top-6 right-6 text-white/70 hover:text-white p-1.5 rounded-full bg-white/10 transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <GoogleIcon name="close" size={20} />
           </button>
 
           <span className="text-[#ffdad7] font-mono text-[10px] uppercase tracking-[0.3em] block mb-1">
@@ -93,7 +93,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
           {isSubmitted ? (
             <div className="text-center py-6">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
-                <CheckCircle className="w-10 h-10" />
+                <GoogleIcon name="check_circle" filled size={36} className="text-emerald-600" />
               </div>
 
               <span className="text-xs font-bold uppercase tracking-widest text-[#942225] block mb-1">
@@ -112,21 +112,21 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#251918]">
-                  <MapPin className="w-4 h-4 text-[#942225]" />
+                  <GoogleIcon name="location_on" filled size={16} className="text-[#942225]" />
                   <span>
                     <strong>Unidade:</strong> {selectedStore.name} ({selectedStore.address})
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#251918]">
-                  <Calendar className="w-4 h-4 text-[#942225]" />
+                  <GoogleIcon name="calendar_month" filled size={16} className="text-[#942225]" />
                   <span>
                     <strong>Data:</strong> {date} às {time}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-[#251918]">
-                  <Users className="w-4 h-4 text-[#942225]" />
+                  <GoogleIcon name="group" filled size={16} className="text-[#942225]" />
                   <span>
                     <strong>Mesa para:</strong> {guests} {guests === 1 ? 'Pessoa' : 'Pessoas'} ({name})
                   </span>
@@ -149,7 +149,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
               {/* Select Store */}
               <div>
                 <label className="block text-xs font-semibold uppercase text-[#584140] mb-1.5 flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-[#942225]" /> Unidade
+                  <GoogleIcon name="location_on" filled size={16} className="text-[#942225]" /> Unidade
                 </label>
                 <select
                   value={storeId}
@@ -168,7 +168,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-semibold uppercase text-[#584140] mb-1.5 flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4 text-[#942225]" /> Data
+                    <GoogleIcon name="calendar_month" filled size={16} className="text-[#942225]" /> Data
                   </label>
                   <input
                     type="date"
@@ -181,7 +181,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
 
                 <div>
                   <label className="block text-xs font-semibold uppercase text-[#584140] mb-1.5 flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-[#942225]" /> Horário
+                    <GoogleIcon name="schedule" filled size={16} className="text-[#942225]" /> Horário
                   </label>
                   <select
                     value={time}
@@ -198,7 +198,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({
 
                 <div>
                   <label className="block text-xs font-semibold uppercase text-[#584140] mb-1.5 flex items-center gap-1.5">
-                    <Users className="w-4 h-4 text-[#942225]" /> Pessoas
+                    <GoogleIcon name="group" filled size={16} className="text-[#942225]" /> Pessoas
                   </label>
                   <select
                     value={guests}

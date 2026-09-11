@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Star, Quote, Send, Check, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import { REVIEWS } from '../data/mockData';
 import { Review } from '../types';
 
@@ -128,11 +128,14 @@ export const ReviewsSection: React.FC = () => {
                 <span className="font-serif font-bold text-lg text-[#251918]">
                   4,7
                 </span>
-                <div className="flex items-center text-amber-500 ml-1">
+                <div className="flex items-center text-amber-500 ml-1 gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star
+                    <GoogleIcon
                       key={i}
-                      className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
+                      name="star"
+                      filled
+                      size={15}
+                      className="text-amber-400"
                     />
                   ))}
                 </div>
@@ -152,7 +155,7 @@ export const ReviewsSection: React.FC = () => {
                 aria-label="Depoimento anterior"
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-white text-[#251918] hover:bg-[#942225] hover:text-white transition-all shadow-sm active:scale-95 cursor-pointer border border-[#8c716f]/10"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <GoogleIcon name="chevron_left" size={22} />
               </button>
 
               <div className="px-2 text-xs font-mono font-bold text-[#584140] select-none">
@@ -164,7 +167,7 @@ export const ReviewsSection: React.FC = () => {
                 aria-label="Próximo depoimento"
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-white text-[#251918] hover:bg-[#942225] hover:text-white transition-all shadow-sm active:scale-95 cursor-pointer border border-[#8c716f]/10"
               >
-                <ChevronRight className="w-5 h-5" />
+                <GoogleIcon name="chevron_right" size={22} />
               </button>
             </div>
 
@@ -174,7 +177,7 @@ export const ReviewsSection: React.FC = () => {
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#251918] hover:bg-[#942225] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#ffdad7]" />
+              <GoogleIcon name="auto_awesome" filled size={16} className="text-[#ffdad7]" />
               <span>Avaliar no Google</span>
             </a>
           </div>
@@ -208,13 +211,16 @@ export const ReviewsSection: React.FC = () => {
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex text-amber-500 gap-0.5">
                         {[...Array(review.rating)].map((_, i) => (
-                          <Star
+                          <GoogleIcon
                             key={i}
-                            className="w-4 h-4 fill-amber-400 text-amber-400"
+                            name="star"
+                            filled
+                            size={18}
+                            className="text-amber-400"
                           />
                         ))}
                       </div>
-                      <Quote className="w-7 h-7 text-[#942225]/20" />
+                      <GoogleIcon name="format_quote" size={32} className="text-[#942225]/20 rotate-180" />
                     </div>
 
                     {/* Texto do Depoimento */}
@@ -295,7 +301,7 @@ export const ReviewsSection: React.FC = () => {
                 {submitted ? (
                   <div className="py-8 text-center text-green-700 font-semibold flex flex-col items-center gap-2">
                     <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                      <Check className="w-6 h-6 text-green-600" />
+                      <GoogleIcon name="check_circle" filled size={28} className="text-green-600" />
                     </div>
                     <span>Obrigado pelo seu carinho! Sua mensagem foi enviada.</span>
                   </div>
@@ -325,14 +331,17 @@ export const ReviewsSection: React.FC = () => {
                             type="button"
                             key={star}
                             onClick={() => setRating(star)}
-                            className="p-1 hover:scale-110 transition-transform"
+                            className="p-1 hover:scale-110 transition-transform cursor-pointer"
                           >
-                            <Star
-                              className={`w-6 h-6 ${
+                            <GoogleIcon
+                              name="star"
+                              filled={star <= rating}
+                              size={26}
+                              className={
                                 star <= rating
-                                  ? 'fill-amber-400 text-amber-400'
+                                  ? 'text-amber-400'
                                   : 'text-gray-300'
-                              }`}
+                              }
                             />
                           </button>
                         ))}
@@ -357,15 +366,15 @@ export const ReviewsSection: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setIsFormOpen(false)}
-                        className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-[#584140] hover:bg-gray-100 transition-colors"
+                        className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-[#584140] hover:bg-gray-100 transition-colors cursor-pointer"
                       >
                         Cancelar
                       </button>
                       <button
                         type="submit"
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#942225] hover:bg-[#78181b] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-md"
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#942225] hover:bg-[#78181b] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-md cursor-pointer"
                       >
-                        <Send className="w-3.5 h-3.5" />
+                        <GoogleIcon name="send" filled size={16} />
                         <span>Publicar</span>
                       </button>
                     </div>

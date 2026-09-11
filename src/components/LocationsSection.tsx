@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Phone, Clock, ExternalLink, Calendar, Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import { STORES } from '../data/mockData';
 import { IFoodIcon } from './IFoodIcon';
 
@@ -73,7 +74,7 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
 
               <div className="space-y-4 text-sm text-[#584140] mb-8">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#942225] shrink-0 mt-0.5" />
+                  <GoogleIcon name="location_on" filled size={20} className="text-[#942225] shrink-0 mt-0.5" />
                   <div>
                     <p className="font-medium text-[#251918]">{currentStore.address}</p>
                     <p className="text-xs text-[#584140]">{currentStore.city}</p>
@@ -81,12 +82,12 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-[#942225] shrink-0" />
+                  <GoogleIcon name="schedule" filled size={20} className="text-[#942225] shrink-0" />
                   <span className="font-medium">{currentStore.hours}</span>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-[#942225] shrink-0" />
+                  <GoogleIcon name="call" filled size={20} className="text-[#942225] shrink-0" />
                   <span className="font-medium">{currentStore.phone}</span>
                 </div>
 
@@ -137,7 +138,7 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                 onClick={() => onOpenReservationWithStore(currentStore.id)}
                 className="flex-1 bg-[#942225] hover:bg-[#78181b] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Calendar className="w-4 h-4" />
+                <GoogleIcon name="calendar_month" filled size={18} />
                 <span>Reservar Mesa</span>
               </motion.button>
 
@@ -149,7 +150,7 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                 rel="noopener noreferrer"
                 className="border border-[#8c716f]/30 hover:border-[#942225] bg-white text-[#251918] hover:text-[#942225] px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2"
               >
-                <ExternalLink className="w-4 h-4" />
+                <GoogleIcon name="open_in_new" size={18} />
                 <span>Como Chegar</span>
               </motion.a>
             </div>

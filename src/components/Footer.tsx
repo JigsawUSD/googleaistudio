@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowUp, ArrowUpRight, CheckCircle2, BookOpen, Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import { IFoodIcon } from './IFoodIcon';
 
 interface FooterProps {
@@ -100,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
                       onClick={onOpenFullMenu}
                       className="text-[#942225] hover:text-[#78181b] transition-colors font-bold flex items-center gap-1.5 cursor-pointer"
                     >
-                      <BookOpen className="w-3.5 h-3.5" />
+                      <GoogleIcon name="menu_book" filled size={16} />
                       <span>Cardápio PDF</span>
                     </button>
                   </li>
@@ -129,7 +130,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
                       <Instagram className="w-3.5 h-3.5" />
                     </span>
                     <span>Instagram</span>
-                    <ArrowUpRight className="w-3 h-3 text-[#942225] ml-auto" />
+                    <GoogleIcon name="north_east" size={14} className="text-[#942225] ml-auto" />
                   </a>
                 </li>
                 <li>
@@ -138,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
                       <Facebook className="w-3.5 h-3.5" />
                     </span>
                     <span>Facebook</span>
-                    <ArrowUpRight className="w-3 h-3 text-[#942225] ml-auto" />
+                    <GoogleIcon name="north_east" size={14} className="text-[#942225] ml-auto" />
                   </a>
                 </li>
                 <li>
@@ -147,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
                       <IFoodIcon className="w-3.5 h-3.5" />
                     </span>
                     <span>iFood</span>
-                    <ArrowUpRight className="w-3 h-3 text-[#942225] ml-auto" />
+                    <GoogleIcon name="north_east" size={14} className="text-[#942225] ml-auto" />
                   </a>
                 </li>
               </ul>
@@ -163,7 +164,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
 
               {subscribed ? (
                 <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 p-3 rounded-xl border border-emerald-200">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <GoogleIcon name="check_circle" filled size={16} className="text-emerald-600" />
                   <span>Cadastrado com sucesso!</span>
                 </div>
               ) : (
@@ -180,7 +181,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
                     type="submit"
                     className="absolute right-1 top-1/2 -translate-y-1/2 bg-[#942225] hover:bg-[#78181b] text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors cursor-pointer"
                   >
-                    <ArrowUpRight className="w-4 h-4" />
+                    <GoogleIcon name="north_east" size={14} />
                   </button>
                 </form>
               )}
@@ -204,7 +205,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
               className="flex items-center gap-1 text-[#942225] font-bold hover:underline cursor-pointer"
             >
               <span>Topo</span>
-              <ArrowUp className="w-3.5 h-3.5" />
+              <GoogleIcon name="arrow_upward" size={16} />
             </button>
           </div>
         </div>

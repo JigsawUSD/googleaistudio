@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import { SpotlightCard } from './ui/SpotlightCard';
 import { getAssetUrl } from '../utils/asset';
 
@@ -85,20 +85,20 @@ export const CuratorshipSection: React.FC = () => {
                   className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#251918]/80 hover:bg-[#942225] text-white flex items-center justify-center transition-all cursor-pointer shadow-lg z-10"
                   aria-label="Anterior"
                 >
-                  <ChevronLeft className="w-6 h-6" />
+                  <GoogleIcon name="chevron_left" size={24} />
                 </button>
                 <button
                   onClick={handleNext}
                   className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#251918]/80 hover:bg-[#942225] text-white flex items-center justify-center transition-all cursor-pointer shadow-lg z-10"
                   aria-label="Próximo"
                 >
-                  <ChevronRight className="w-6 h-6" />
+                  <GoogleIcon name="chevron_right" size={24} />
                 </button>
 
                 {/* Badge overlay with synchronized content */}
                 <div className="absolute bottom-6 left-6 right-6 bg-[#181010]/95 text-white p-6 rounded-2xl border border-white/10 shadow-2xl">
                   <div className="flex items-center gap-2 text-[#ffdad7] text-xs uppercase font-semibold tracking-wider mb-1">
-                    <Sparkles className="w-4 h-4 text-[#942225]" />
+                    <GoogleIcon name="auto_awesome" filled size={16} className="text-[#942225]" />
                     <span>{pillars[activeTab].subtitle}</span>
                   </div>
                   <h4 className="font-serif text-2xl font-bold">{pillars[activeTab].title}</h4>
@@ -140,8 +140,10 @@ export const CuratorshipSection: React.FC = () => {
                     >
                       {pillar.title}
                     </span>
-                    <ArrowRight
-                      className={`w-4 h-4 transition-transform ${
+                    <GoogleIcon
+                      name="arrow_forward"
+                      size={18}
+                      className={`transition-transform ${
                         activeTab === idx ? 'text-[#942225] translate-x-1' : 'text-[#584140]/40'
                       }`}
                     />
@@ -161,7 +163,7 @@ export const CuratorshipSection: React.FC = () => {
                             key={item}
                             className="inline-flex items-center gap-1.5 text-[11px] font-semibold bg-white text-[#942225] px-3 py-1 rounded-full shadow-xs border border-[#942225]/10"
                           >
-                            <CheckCircle2 className="w-3 h-3 text-[#942225]" />
+                            <GoogleIcon name="check_circle" filled size={14} className="text-[#942225]" />
                             {item}
                           </span>
                         ))}

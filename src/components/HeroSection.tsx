@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ChevronDown, Calendar, BookOpen, MapPin } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import { TypeAnimation } from 'react-type-animation';
 import { AmbientParticles } from './ui/AmbientParticles';
 import { MagneticButton } from './ui/MagneticButton';
@@ -147,7 +147,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             onClick={onOpenReservation}
             className="w-full sm:w-auto bg-[#942225] hover:bg-[#b53a3a] text-white px-7 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all shadow-xl shadow-[#942225]/40 flex items-center justify-center gap-2.5 cursor-pointer"
           >
-            <Calendar className="w-4 h-4" />
+            <GoogleIcon name="calendar_month" filled size={18} />
             <span>Reservar Mesa</span>
           </MagneticButton>
 
@@ -161,7 +161,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             }}
             className="w-full sm:w-auto border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-7 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2.5 cursor-pointer shadow-lg"
           >
-            <BookOpen className="w-4 h-4 text-[#ffdad7]" />
+            <GoogleIcon name="menu_book" filled size={18} className="text-[#ffdad7]" />
             <span>Cardápio PDF Completo</span>
           </MagneticButton>
 
@@ -169,7 +169,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             onClick={scrollToLocations}
             className="w-full sm:w-auto border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-7 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2.5 cursor-pointer"
           >
-            <MapPin className="w-4 h-4" />
+            <GoogleIcon name="location_on" filled size={18} />
             <span>Como Chegar</span>
           </MagneticButton>
         </motion.div>
@@ -184,7 +184,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors cursor-pointer group"
       >
         <span className="text-[9px] uppercase tracking-[0.3em] font-medium">Descubra</span>
-        <ChevronDown className="w-5 h-5 animate-bounce group-hover:text-[#ffdad7]" />
+        <GoogleIcon name="keyboard_arrow_down" size={24} className="animate-bounce group-hover:text-[#ffdad7]" />
       </motion.button>
     </section>
   );

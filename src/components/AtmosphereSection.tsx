@@ -1,30 +1,30 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Building2, Coffee, Sun, Sparkles } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import { getAssetUrl } from '../utils/asset';
 
 export const AtmosphereSection: React.FC = () => {
   const features = [
     {
-      icon: <Building2 className="w-5 h-5 text-[#ffdad7]" />,
+      icon: <GoogleIcon name="storefront" filled weight={500} size={22} className="text-[#ffdad7]" />,
       title: 'Arquitetura Contemporânea',
       description:
         'Tijolos aparentes, madeira natural e um design inspirado nas tradicionais cafeterias europeias criam um ambiente acolhedor e cheio de personalidade.',
     },
     {
-      icon: <Coffee className="w-5 h-5 text-[#ffdad7]" />,
+      icon: <GoogleIcon name="local_cafe" filled weight={500} size={22} className="text-[#ffdad7]" />,
       title: 'Ambiente Aconchegante',
       description:
         'Um espaço confortável para desacelerar, conversar, trabalhar ou apreciar um café especial em qualquer momento do dia.',
     },
     {
-      icon: <Sun className="w-5 h-5 text-[#ffdad7]" />,
+      icon: <GoogleIcon name="wb_sunny" filled weight={500} size={22} className="text-[#ffdad7]" />,
       title: 'Luz Natural & Vegetação',
       description:
         'Grandes aberturas e áreas verdes integram natureza e arquitetura, proporcionando uma experiência leve e agradável.',
     },
     {
-      icon: <Sparkles className="w-5 h-5 text-[#ffdad7]" />,
+      icon: <GoogleIcon name="auto_awesome" filled weight={500} size={22} className="text-[#ffdad7]" />,
       title: 'Experiência Di Napoli',
       description:
         'Cada detalhe da decoração foi pensado para unir conforto, bom gosto e hospitalidade, tornando cada visita memorável.',

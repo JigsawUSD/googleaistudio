@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Calendar, BookOpen, Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import { IFoodIcon } from './IFoodIcon';
 
 interface HeaderProps {
@@ -97,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
                     : 'bg-white/10 text-white border-white/25 hover:bg-white/20 backdrop-blur-md'
                 }`}
               >
-                <BookOpen className="w-3.5 h-3.5 text-[#ffdad7]" />
+                <GoogleIcon name="menu_book" filled size={16} className="text-[#ffdad7]" />
                 <span>Cardápio PDF</span>
               </button>
             )}
@@ -107,7 +108,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={onOpenReservation}
               className="hidden sm:flex items-center gap-2 bg-[#942225] hover:bg-[#78181b] text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all transform hover:scale-105 shadow-md shadow-[#942225]/20 cursor-pointer"
             >
-              <Calendar className="w-3.5 h-3.5" />
+              <GoogleIcon name="calendar_month" filled size={16} />
               <span>Reservar Mesa</span>
             </button>
 
@@ -118,7 +119,7 @@ export const Header: React.FC<HeaderProps> = ({
                 isScrolled ? 'text-[#251918]' : 'text-white'
               }`}
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <GoogleIcon name="close" size={24} /> : <GoogleIcon name="menu" size={24} />}
             </button>
           </div>
         </div>
@@ -155,7 +156,7 @@ export const Header: React.FC<HeaderProps> = ({
                   }}
                   className="w-full bg-[#251918] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-md flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4 text-[#ffdad7]" />
+                  <GoogleIcon name="menu_book" filled size={18} className="text-[#ffdad7]" />
                   Cardápio PDF Completo
                 </button>
               )}
@@ -167,7 +168,7 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className="w-full bg-[#942225] text-white py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-lg flex items-center justify-center gap-2"
               >
-                <Calendar className="w-4 h-4" />
+                <GoogleIcon name="calendar_month" filled size={18} />
                 Reservar Mesa
               </button>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Download, Share2, FileText, Loader2 } from 'lucide-react';
+import { GoogleIcon } from './ui/GoogleIcon';
 import * as pdfjsLib from 'pdfjs-dist';
 import { getAssetUrl } from '../utils/asset';
 // @ts-ignore
@@ -152,7 +152,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
               Cardápio
             </h3>
             <div className="flex items-center justify-center gap-1.5 text-gray-500 text-xs font-medium mt-1">
-              <FileText className="w-3.5 h-3.5 text-gray-400" />
+              <GoogleIcon name="description" filled size={16} className="text-gray-400" />
               <span>PDF · Documento Oficial</span>
             </div>
             <p className="text-xs font-semibold text-[#942225] mt-2 tracking-wide uppercase">
@@ -167,7 +167,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
           >
             {loading && (
               <div className="my-auto py-20 flex flex-col items-center justify-center text-gray-500 gap-3">
-                <Loader2 className="w-8 h-8 text-[#942225] animate-spin" />
+                <GoogleIcon name="progress_activity" size={32} className="text-[#942225] animate-spin" />
                 <span className="text-sm font-medium">Carregando cardápio...</span>
               </div>
             )}
@@ -227,7 +227,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
               download="cardapio_dinapoli.pdf"
               className="flex-1 max-w-[200px] sm:max-w-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#251918] hover:bg-[#942225] text-white text-xs font-bold transition-all shadow-md cursor-pointer"
             >
-              <Download className="w-4 h-4" />
+              <GoogleIcon name="download" filled size={18} />
               <span>Baixar Cardápio</span>
             </a>
 
@@ -237,7 +237,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
                 className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-colors cursor-pointer"
                 title="Compartilhar"
               >
-                <Share2 className="w-4 h-4" />
+                <GoogleIcon name="share" filled size={18} />
               </button>
 
               <button
@@ -245,7 +245,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
                 className="w-10 h-10 rounded-full bg-[#251918] hover:bg-[#942225] text-white flex items-center justify-center transition-colors shadow-md cursor-pointer"
                 title="Fechar"
               >
-                <X className="w-5 h-5" />
+                <GoogleIcon name="close" size={20} />
               </button>
             </div>
           </div>
