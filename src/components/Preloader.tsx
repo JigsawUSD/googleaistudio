@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface PreloaderProps {
@@ -8,11 +8,13 @@ interface PreloaderProps {
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     let animationFrameId: number;
     const startTime = performance.now();
-    const duration = 2800; // Smooth 2.8s loading experience
+    const duration = 2200; // Smooth 2.2s loading experience
 
     const updateProgress = (currentTime: number) => {
       const elapsed = currentTime - startTime;
@@ -28,8 +30,8 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         setProgress(100);
         setTimeout(() => {
           setIsLoading(false);
-          if (onComplete) onComplete();
-        }, 300);
+          if (onCompleteRef.current) onCompleteRef.current();
+        }, 200);
       }
     };
 
@@ -38,7 +40,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [onComplete]);
+  }, []);
 
   return (
     <AnimatePresence>

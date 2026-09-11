@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import Lenis from 'lenis';
 import { Preloader } from './components/Preloader';
 import { Header } from './components/Header';
@@ -11,9 +11,15 @@ import { AtmosphereSection } from './components/AtmosphereSection';
 import { ReviewsSection } from './components/ReviewsSection';
 import { LocationsSection } from './components/LocationsSection';
 import { ReservationModal } from './components/ReservationModal';
-import { FullMenuPdfModal } from './components/FullMenuPdfModal';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
+
+// Lazy-load PDF modal so heavy pdfjs-dist does not block initial load
+const FullMenuPdfModal = lazy(() =>
+  import('./components/FullMenuPdfModal').then((mod) => ({
+    default: mod.FullMenuPdfModal,
+  }))
+);
 
 export default function App() {
   const [isReservationOpen, setIsReservationOpen] = useState(false);
@@ -21,34 +27,42 @@ export default function App() {
   const [preselectedStoreId, setPreselectedStoreId] = useState<string | undefined>(undefined);
   const [isPreloaderComplete, setIsPreloaderComplete] = useState(false);
 
+  const handlePreloaderComplete = useCallback(() => {
+    setIsPreloaderComplete(true);
+  }, []);
+
   useEffect(() => {
-    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
-    
-    // Only instantiate Lenis on desktop / fine-pointer devices for silky smooth scrolling,
-    // allowing mobile devices to use native hardware-accelerated momentum scrolling.
     let lenis: Lenis | null = null;
     let rafId: number | null = null;
 
-    if (!isTouch) {
-      lenis = new Lenis({
-        duration: 1.0,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1,
-      });
+    try {
+      const isTouch =
+        typeof window !== 'undefined' &&
+        (window.matchMedia?.('(pointer: coarse)')?.matches || 'ontouchstart' in window);
 
-      (window as any).lenis = lenis;
+      if (!isTouch) {
+        lenis = new Lenis({
+          duration: 1.0,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          wheelMultiplier: 1,
+        });
 
-      function raf(time: number) {
-        if (lenis && !document.hidden) {
-          lenis.raf(time);
-        }
+        (window as any).lenis = lenis;
+
+        const raf = (time: number) => {
+          if (lenis && !document.hidden) {
+            lenis.raf(time);
+          }
+          rafId = requestAnimationFrame(raf);
+        };
+
         rafId = requestAnimationFrame(raf);
       }
-
-      rafId = requestAnimationFrame(raf);
+    } catch (e) {
+      console.warn('Lenis smooth scroll disabled:', e);
     }
 
     // Global click handler for anchor links in navbar, footer, etc.
@@ -102,7 +116,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#fff8f7] text-[#251918] flex flex-col font-sans selection:bg-[#942225] selection:text-white">
       {/* Initial Preloader */}
-      <Preloader onComplete={() => setIsPreloaderComplete(true)} />
+      <Preloader onComplete={handlePreloaderComplete} />
 
       {/* Header */}
       <Header
@@ -138,10 +152,14 @@ export default function App() {
         preselectedStoreId={preselectedStoreId}
       />
 
-      <FullMenuPdfModal
-        isOpen={isFullMenuOpen}
-        onClose={() => setIsFullMenuOpen(false)}
-      />
+      {isFullMenuOpen && (
+        <Suspense fallback={null}>
+          <FullMenuPdfModal
+            isOpen={isFullMenuOpen}
+            onClose={() => setIsFullMenuOpen(false)}
+          />
+        </Suspense>
+      )}
 
       {/* Floating WhatsApp Button */}
       <WhatsAppButton />

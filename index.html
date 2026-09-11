@@ -10,16 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
-    <script>
-      // GitHub Pages SPA helper: Garante que a URL da subpasta termine com '/',
-      // evitando que assets relativos (./assets/...) resolvam incorretamente no domínio raiz
-      (function () {
-        var path = window.location.pathname;
-        if (path && !path.endsWith('/') && !path.split('/').pop().includes('.')) {
-          window.location.replace(path + '/' + window.location.search + window.location.hash);
-        }
-      })();
-    </script>
   </head>
   <body class="bg-[#fff8f7] text-[#251918] antialiased selection:bg-[#942225] selection:text-white overflow-x-hidden font-sans">
     <div id="root"></div>

@@ -104,6 +104,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
         const renderContext = {
           canvasContext: context,
           viewport: viewport,
+          canvas: canvas,
         };
 
         await page.render(renderContext).promise;
@@ -202,7 +203,9 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
                       {/* Canvas Container Card */}
                       <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden w-full flex justify-center p-1 sm:p-2">
                         <canvas
-                          ref={(el) => (pageCanvasRefs.current[pageNum] = el)}
+                          ref={(el) => {
+                            pageCanvasRefs.current[pageNum] = el;
+                          }}
                           className="max-w-full h-auto rounded-lg shadow-inner block"
                         />
                       </div>

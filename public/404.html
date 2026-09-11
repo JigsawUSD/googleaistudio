@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <title>Di Napoli Sorveteria & Cafeteria</title>
     <script>
-      // Redireciona requisições não encontradas do GitHub Pages para a raiz da aplicação preservando rotas e parâmetros
       (function () {
         var path = window.location.pathname;
         var parts = path.split('/').filter(Boolean);
-        // Se houver subpasta de repositório (ex: /repositorio/...), mantém o primeiro segmento
         var repoBase = parts.length > 0 ? '/' + parts[0] + '/' : '/';
-        window.location.replace(repoBase + window.location.search + window.location.hash);
+        if (path !== repoBase && path !== repoBase.slice(0, -1)) {
+          window.location.replace(repoBase + window.location.search + window.location.hash);
+        }
       })();
     </script>
   </head>
