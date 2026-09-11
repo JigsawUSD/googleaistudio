@@ -66,9 +66,9 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onOpenFullMenu }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: index * 0.04 }}
             >
-              <SpotlightCard className="group relative bg-[#fff8f7] rounded-3xl overflow-hidden border border-[#8c716f]/15 hover:border-[#942225]/40 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between h-full hover:-translate-y-1">
+              <SpotlightCard className="group relative bg-[#fff8f7] rounded-3xl border border-[#8c716f]/15 hover:border-[#942225]/40 flex flex-col justify-between h-full">
                 {/* Image Container */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#ffe9e7]">
+                <div className="relative aspect-[4/3] rounded-t-3xl overflow-hidden bg-[#ffe9e7]">
                   <img
                     src={item.image}
                     alt={item.name}

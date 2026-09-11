@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
 export const WhatsAppButton: React.FC = () => {
@@ -6,17 +6,117 @@ export const WhatsAppButton: React.FC = () => {
   const defaultMessage = encodeURIComponent('Olá! Vim pelo site da Di Napoli e gostaria de mais informações.');
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${defaultMessage}`;
 
+  const [isShiftedUp, setIsShiftedUp] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    updateDimensions();
+
+    const handleScrollOrResize = () => {
+      const footerBottom = document.getElementById('footer-bottom-bar');
+      const footer = document.getElementById('site-footer') || document.querySelector('footer');
+
+      if (footerBottom) {
+        const rect = footerBottom.getBoundingClientRect();
+        // Quando a barra de termos e direitos do rodapé entra no campo de visão
+        if (rect.top <= window.innerHeight - 15) {
+          setIsShiftedUp(true);
+          return;
+        }
+      }
+
+      // Verificação por distância até o final da página
+      const scrollBottomDistance =
+        document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+      if (scrollBottomDistance < 180) {
+        setIsShiftedUp(true);
+        return;
+      }
+
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        if (footerRect.bottom <= window.innerHeight + 50) {
+          setIsShiftedUp(true);
+          return;
+        }
+      }
+
+      setIsShiftedUp(false);
+    };
+
+    window.addEventListener('scroll', handleScrollOrResize, { passive: true });
+    window.addEventListener('resize', () => {
+      updateDimensions();
+      handleScrollOrResize();
+    });
+
+    // Ouvinte para instâncias do Lenis
+    const lenis = (window as any).lenis;
+    if (lenis && typeof lenis.on === 'function') {
+      lenis.on('scroll', handleScrollOrResize);
+    }
+
+    // Observer com IntersectionObserver para disparo imediato
+    let observer: IntersectionObserver | null = null;
+    const targetEl = document.getElementById('footer-bottom-bar') || document.getElementById('site-footer');
+    if (targetEl && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIsShiftedUp(true);
+            } else {
+              handleScrollOrResize();
+            }
+          });
+        },
+        {
+          rootMargin: '0px 0px -15px 0px',
+          threshold: [0, 0.2, 0.5, 1],
+        }
+      );
+      observer.observe(targetEl);
+    }
+
+    handleScrollOrResize();
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollOrResize);
+      window.removeEventListener('resize', handleScrollOrResize);
+      if (lenis && typeof lenis.off === 'function') {
+        lenis.off('scroll', handleScrollOrResize);
+      }
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, []);
+
+  const shiftDistance = isMobile ? -84 : -70;
+
   return (
     <motion.a
+      id="whatsapp-floating-btn"
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ opacity: 0, scale: 0.8, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 1 }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        y: isShiftedUp ? shiftDistance : 0,
+      }}
+      transition={{
+        y: { type: 'spring', stiffness: 280, damping: 24 },
+        opacity: { duration: 0.5, delay: 0.8 },
+        scale: { duration: 0.3 },
+      }}
       whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.92 }}
-      className="fixed bottom-6 right-6 z-40 flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white p-3.5 md:p-4 rounded-full shadow-2xl transition-all duration-300 group border border-white/20"
+      className="fixed bottom-6 right-6 z-40 flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white p-3.5 md:p-4 rounded-full shadow-2xl transition-colors duration-300 group border border-white/20"
       aria-label="Falar pelo WhatsApp"
     >
       {/* Pulse ping effect */}

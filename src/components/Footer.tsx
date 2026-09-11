@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
   };
 
   return (
-    <footer className="bg-white pt-24 pb-12 border-t border-[#8c716f]/15">
+    <footer id="site-footer" className="bg-white pt-24 pb-12 border-t border-[#8c716f]/15">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
           {/* Brand Info */}
@@ -189,7 +189,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenFullMenu }) => {
         </div>
 
         {/* Bottom copyright & back to top */}
-        <div className="pt-8 border-t border-[#8c716f]/15 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-[#584140]">
+        <div id="footer-bottom-bar" className="pt-8 border-t border-[#8c716f]/15 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-[#584140]">
           <p>© 2026 Di Napoli Heritage Sorveteria & Cafeteria. Todos os direitos reservados.</p>
 
           <div className="flex items-center gap-6">

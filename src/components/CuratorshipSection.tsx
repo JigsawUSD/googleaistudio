@@ -12,8 +12,7 @@ export const CuratorshipSection: React.FC = () => {
       subtitle: 'Novidade Exclusiva na Di Napoli',
       description:
         'A união perfeita entre o gelato artesanal cremoso e o café espresso 100% arábica extraído na hora. Uma experiência sensorial única inspirada nos clássicos italianos.',
-      image:
-        'https://6a694d871a1cec82568d0cd4.imgix.net/sandbox/758671191_18188694397392703_3568608940981779370_n.avif',
+      image: '/avif/affogato.avif',
       highlights: ['Espresso Extraído na Hora', 'Gelato Artesanal Cremoso', 'Lançamento Exclusivo'],
     },
     {
@@ -21,8 +20,7 @@ export const CuratorshipSection: React.FC = () => {
       subtitle: 'Com Marshmallows Tostados',
       description:
         'Cremoso chocolate quente artesanal preparado com cacau nobre e finalizado com marshmallows tostados na hora. Uma novidade especial irresistível na Di Napoli.',
-      image:
-        'https://6a694d871a1cec82568d0cd4.imgix.net/sandbox/747550229_18187350406392703_6424748922102632615_n.avif',
+      image: '/avif/chocolatequente.avif',
       highlights: ['Marshmallows Tostados na Hora', 'Chocolate Nobre Cremoso', 'Novidade Especial Di Napoli'],
     },
     {
@@ -62,7 +60,7 @@ export const CuratorshipSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Image Showcase */}
           <div className="lg:col-span-6 relative">
-            <SpotlightCard className="shadow-2xl border border-[#8c716f]/15 group">
+            <SpotlightCard enableGpuHover={false} className="shadow-2xl border border-[#8c716f]/15 group">
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.img

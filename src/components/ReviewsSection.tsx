@@ -202,7 +202,7 @@ export const ReviewsSection: React.FC = () => {
                 }}
                 className="px-2 sm:px-3 shrink-0 flex"
               >
-                <div className="w-full bg-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-[#8c716f]/15 shadow-sm hover:shadow-md transition-shadow min-h-[290px] h-full">
+                <div className="w-full bg-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-[#8c716f]/15 card-hardware-accelerated gpu-card min-h-[290px] h-full">
                   <div>
                     {/* Estrelas e Ícone de Aspas */}
                     <div className="flex items-center justify-between mb-4">

@@ -30,23 +30,65 @@ body {
   color: #251918;
 }
 
-/* Card item rendering optimization */
-.card-item {
-  contain: layout style;
+/* Card item rendering optimization (Meta/Instagram standard 60/120 FPS) */
+.card-hardware-accelerated,
+.gpu-card {
+  position: relative;
+  /* 1. Hardware acceleration: dedicated GPU composite layer promotion */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  /* 2. GPU hint for transform mutations */
+  will-change: transform;
+  /* 4. Motion exclusively driven by transform with high-performance cubic-bezier */
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
 }
 
-@media (hover: hover) {
-  .spotlight-overlay {
-    opacity: var(--spotlight-opacity, 0);
-    background: radial-gradient(600px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px), var(--spotlight-color, rgba(148, 34, 37, 0.12)), transparent 40%);
-    transition: opacity 0.25s ease;
-  }
+/* 3. Shadow pre-rendered on pseudo-element with zero initial opacity:
+      Heavy box-shadow rasterization occurs once at page load.
+      On :hover, ONLY 'opacity' changes, handled 100% on the GPU Compositor thread (Zero Paint / Zero Reflow). */
+.card-hardware-accelerated::after,
+.gpu-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* Pre-rendered deep ambient drop shadow */
+  box-shadow: 0 22px 45px -10px rgba(24, 16, 16, 0.26), 0 10px 20px -5px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  /* GPU layer promotion for opacity transition */
+  will-change: opacity;
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (hover: none) {
-  .spotlight-overlay {
-    display: none !important;
-  }
+/* Hover States: exclusively transform and opacity */
+.card-hardware-accelerated:hover,
+.gpu-card:hover {
+  transform: translate3d(0, -6px, 0);
+}
+
+.card-hardware-accelerated:hover::after,
+.gpu-card:hover::after {
+  opacity: 1;
+}
+
+/* Active click state for tactile responsive feedback */
+.card-hardware-accelerated:active,
+.gpu-card:active {
+  transform: translate3d(0, -2px, 0);
+  transition-duration: 0.1s;
+}
+
+/* Child media GPU acceleration to prevent paint during card movement/zoom */
+.card-hardware-accelerated img,
+.gpu-card img {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 @layer utilities {

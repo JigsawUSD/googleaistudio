@@ -44,11 +44,10 @@ export const AtmosphereSection: React.FC = () => {
           >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
               <img
-                src="https://6a694d871a1cec82568d0cd4.imgix.net/sandbox/655280861_18092400905515398_3687497987719078752_n.avif"
-                alt="Nosso ambiente"
+                src="/avif/parteinterna.avif"
+                alt="Ambiente interno Di Napoli"
                 loading="lazy"
                 decoding="async"
-                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#251918] via-transparent to-transparent opacity-80" />
