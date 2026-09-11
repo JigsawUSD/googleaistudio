@@ -75,10 +75,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-4 sm:mb-6 max-w-full"
         >
-          <div className="inline-flex items-center justify-center max-w-full text-white/85 font-mono uppercase tracking-[0.14em] xs:tracking-[0.2em] sm:tracking-[0.28em] md:tracking-[0.35em] text-[9px] xs:text-[10px] sm:text-xs bg-white/10 backdrop-blur-md px-3.5 py-1.5 xs:px-4 xs:py-2 sm:px-5 sm:py-2 rounded-full border border-white/15 shadow-inner leading-none text-center">
-            <span className="whitespace-nowrap">Um legado de família</span>
-            <span className="mx-1.5 xs:mx-2 text-white/40 select-none">•</span>
-            <span className="whitespace-nowrap">Desde 1987</span>
+          <div className="inline-flex items-center justify-center max-w-full text-white/90 font-mono uppercase tracking-[0.16em] xs:tracking-[0.2em] sm:tracking-[0.28em] text-[11px] xs:text-xs sm:text-xs bg-white/10 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-white/15 shadow-inner leading-none text-center">
+            <span className="whitespace-nowrap font-medium">Um legado de família</span>
+            <span className="mx-2 text-white/40 select-none">•</span>
+            <span className="whitespace-nowrap font-medium">Desde 1987</span>
           </div>
         </motion.div>
 
@@ -87,7 +87,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.25 }}
-          className="font-serif text-white text-[2rem] xs:text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.12] sm:leading-[1.08] md:leading-[1.04] mb-5 sm:mb-8 max-w-4xl mx-auto"
+          className="font-serif text-white text-[2.35rem] xs:text-[2.85rem] sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] sm:leading-[1.06] md:leading-[1.04] mb-5 sm:mb-8 max-w-4xl mx-auto"
         >
           {!isLoaded ? (
             <span className="opacity-0">
@@ -150,7 +150,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/85 text-sm xs:text-base md:text-xl font-light max-w-2xl mb-8 sm:mb-10 md:mb-12 leading-relaxed px-2 sm:px-0"
+          className="text-white/90 text-[15px] sm:text-lg md:text-xl font-light max-w-2xl mb-8 sm:mb-10 md:mb-12 leading-relaxed px-2 sm:px-0"
         >
           Onde o sorvete artesanal e a cultura dos cafés especiais se encontram em perfeita sintonia.
         </motion.p>
@@ -160,13 +160,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="w-full flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 xs:gap-4 sm:gap-5 px-2 sm:px-0"
+          className="w-full flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3.5 sm:gap-5 px-2 sm:px-0"
         >
           <MagneticButton
             onClick={onOpenReservation}
-            className="w-full sm:w-auto bg-[#942225] hover:bg-[#b53a3a] text-white px-6 xs:px-7 py-3.5 sm:py-4 rounded-full text-xs font-bold uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-all shadow-xl shadow-[#942225]/40 flex items-center justify-center gap-2.5 cursor-pointer"
+            className="w-full sm:w-auto max-w-sm sm:max-w-none bg-[#942225] hover:bg-[#b53a3a] text-white px-7 py-3.5 sm:py-4 rounded-full text-[13px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] transition-all shadow-xl shadow-[#942225]/40 flex items-center justify-center gap-2.5 cursor-pointer min-h-[48px] sm:min-h-[52px]"
           >
-            <GoogleIcon name="calendar_month" filled size={18} />
+            <GoogleIcon name="calendar_month" filled size={20} />
             <span>Reservar Mesa</span>
           </MagneticButton>
 
@@ -178,17 +178,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 scrollToMenu();
               }
             }}
-            className="w-full sm:w-auto border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 xs:px-7 py-3.5 sm:py-4 rounded-full text-xs font-bold uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-all flex items-center justify-center gap-2.5 cursor-pointer shadow-lg"
+            className="w-full sm:w-auto max-w-sm sm:max-w-none border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-7 py-3.5 sm:py-4 rounded-full text-[13px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] transition-all flex items-center justify-center gap-2.5 cursor-pointer shadow-lg min-h-[48px] sm:min-h-[52px]"
           >
-            <GoogleIcon name="menu_book" filled size={18} className="text-[#ffdad7]" />
+            <GoogleIcon name="menu_book" filled size={20} className="text-[#ffdad7]" />
             <span>Cardápio PDF Completo</span>
           </MagneticButton>
 
           <MagneticButton
             onClick={scrollToLocations}
-            className="w-full sm:w-auto border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 xs:px-7 py-3.5 sm:py-4 rounded-full text-xs font-bold uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-all flex items-center justify-center gap-2.5 cursor-pointer"
+            className="w-full sm:w-auto max-w-sm sm:max-w-none border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-7 py-3.5 sm:py-4 rounded-full text-[13px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] transition-all flex items-center justify-center gap-2.5 cursor-pointer min-h-[48px] sm:min-h-[52px]"
           >
-            <GoogleIcon name="location_on" filled size={18} />
+            <GoogleIcon name="location_on" filled size={20} />
             <span>Como Chegar</span>
           </MagneticButton>
         </motion.div>
