@@ -25,7 +25,8 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100vw;
   background-color: #fff8f7;
   color: #251918;
 }
@@ -112,25 +113,6 @@ html, body {
   background: transparent;
 }
 
-/* Lenis Smooth Scroll CSS */
-html.lenis, html.lenis body {
-  height: auto;
-}
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
 
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
-import Lenis from 'lenis';
 import { Preloader } from './components/Preloader';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
@@ -32,40 +31,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    let lenis: Lenis | null = null;
-    let rafId: number | null = null;
-
-    try {
-      const isTouch =
-        typeof window !== 'undefined' &&
-        (window.matchMedia?.('(pointer: coarse)')?.matches || 'ontouchstart' in window);
-
-      if (!isTouch) {
-        lenis = new Lenis({
-          duration: 1.0,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          orientation: 'vertical',
-          gestureOrientation: 'vertical',
-          smoothWheel: true,
-          wheelMultiplier: 1,
-        });
-
-        (window as any).lenis = lenis;
-
-        const raf = (time: number) => {
-          if (lenis && !document.hidden) {
-            lenis.raf(time);
-          }
-          rafId = requestAnimationFrame(raf);
-        };
-
-        rafId = requestAnimationFrame(raf);
-      }
-    } catch (e) {
-      console.warn('Lenis smooth scroll disabled:', e);
-    }
-
-    // Global click handler for anchor links in navbar, footer, etc.
+    // Global click handler for anchor links with offset compensation for the fixed header
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       const anchor = target?.closest('a');
@@ -75,22 +41,17 @@ export default function App() {
       if (href && href.startsWith('#')) {
         e.preventDefault();
         if (href === '#' || href === '#top') {
-          if (lenis) {
-            lenis.scrollTo(0, { duration: 1.2 });
-          } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
           const targetEl = document.querySelector<HTMLElement>(href);
           if (targetEl) {
-            if (lenis) {
-              lenis.scrollTo(targetEl, {
-                offset: -80,
-                duration: 1.2,
-              });
-            } else {
-              targetEl.scrollIntoView({ behavior: 'smooth' });
-            }
+            const headerOffset = 80;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: Math.max(0, offsetPosition),
+              behavior: 'smooth',
+            });
           }
         }
       }
@@ -99,12 +60,7 @@ export default function App() {
     document.addEventListener('click', handleAnchorClick);
 
     return () => {
-      if (rafId) cancelAnimationFrame(rafId);
       document.removeEventListener('click', handleAnchorClick);
-      if (lenis) {
-        lenis.destroy();
-        delete (window as any).lenis;
-      }
     };
   }, []);
 

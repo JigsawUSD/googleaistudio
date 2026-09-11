@@ -52,7 +52,9 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             y: '-100%',
             transition: { duration: 0.95, ease: [0.77, 0, 0.175, 1] },
           }}
-          className="fixed inset-0 z-[100] bg-[#fff8f7] flex items-center justify-center pointer-events-auto shadow-2xl overflow-hidden"
+          className={`fixed inset-0 z-[100] bg-[#fff8f7] flex items-center justify-center shadow-2xl overflow-hidden ${
+            isLoading ? 'pointer-events-auto' : 'pointer-events-none'
+          }`}
         >
           <motion.div
             exit={{

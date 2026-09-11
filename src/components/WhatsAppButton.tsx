@@ -47,17 +47,22 @@ export const WhatsAppButton: React.FC = () => {
       setIsShiftedUp(false);
     };
 
-    window.addEventListener('scroll', handleScrollOrResize, { passive: true });
+    let scrollTicking = false;
+    const throttledScroll = () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          handleScrollOrResize();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledScroll, { passive: true });
     window.addEventListener('resize', () => {
       updateDimensions();
       handleScrollOrResize();
     });
-
-    // Ouvinte para instâncias do Lenis
-    const lenis = (window as any).lenis;
-    if (lenis && typeof lenis.on === 'function') {
-      lenis.on('scroll', handleScrollOrResize);
-    }
 
     // Observer com IntersectionObserver para disparo imediato
     let observer: IntersectionObserver | null = null;
@@ -84,11 +89,8 @@ export const WhatsAppButton: React.FC = () => {
     handleScrollOrResize();
 
     return () => {
-      window.removeEventListener('scroll', handleScrollOrResize);
+      window.removeEventListener('scroll', throttledScroll);
       window.removeEventListener('resize', handleScrollOrResize);
-      if (lenis && typeof lenis.off === 'function') {
-        lenis.off('scroll', handleScrollOrResize);
-      }
       if (observer) {
         observer.disconnect();
       }
