@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SpotlightCard } from './ui/SpotlightCard';
+import { getAssetUrl } from '../utils/asset';
 
 export const CuratorshipSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -12,7 +13,7 @@ export const CuratorshipSection: React.FC = () => {
       subtitle: 'Novidade Exclusiva na Di Napoli',
       description:
         'A união perfeita entre o gelato artesanal cremoso e o café espresso 100% arábica extraído na hora. Uma experiência sensorial única inspirada nos clássicos italianos.',
-      image: '/avif/affogato.avif',
+      image: getAssetUrl('avif/affogato.avif'),
       highlights: ['Espresso Extraído na Hora', 'Gelato Artesanal Cremoso', 'Lançamento Exclusivo'],
     },
     {
@@ -20,7 +21,7 @@ export const CuratorshipSection: React.FC = () => {
       subtitle: 'Com Marshmallows Tostados',
       description:
         'Cremoso chocolate quente artesanal preparado com cacau nobre e finalizado com marshmallows tostados na hora. Uma novidade especial irresistível na Di Napoli.',
-      image: '/avif/chocolatequente.avif',
+      image: getAssetUrl('avif/chocolatequente.avif'),
       highlights: ['Marshmallows Tostados na Hora', 'Chocolate Nobre Cremoso', 'Novidade Especial Di Napoli'],
     },
     {
@@ -28,7 +29,7 @@ export const CuratorshipSection: React.FC = () => {
       subtitle: 'A Combinação Perfeita de Espresso e Leite',
       description:
         'Nosso cappuccino artesanal preparado com café espresso selecionado e leite integral perfeitamente vaporizado até atingir uma microespuma aveludada e cremosa.',
-      image: '/avif/capuccinocremoso.avif',
+      image: getAssetUrl('avif/capuccinocremoso.avif'),
       highlights: ['Microespuma Aveludada', 'Espresso Selecionado', 'Preparo Artesanal'],
     },
     {

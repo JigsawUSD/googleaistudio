@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Building2, Coffee, Sun, Sparkles } from 'lucide-react';
+import { getAssetUrl } from '../utils/asset';
 
 export const AtmosphereSection: React.FC = () => {
   const features = [
@@ -44,7 +45,7 @@ export const AtmosphereSection: React.FC = () => {
           >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
               <img
-                src="/avif/parteinterna.avif"
+                src={getAssetUrl('avif/parteinterna.avif')}
                 alt="Ambiente interno Di Napoli"
                 loading="lazy"
                 decoding="async"

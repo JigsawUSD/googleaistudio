@@ -1,4 +1,5 @@
 import { MenuItem, Review, StoreLocation } from '../types';
+import { getAssetUrl } from '../utils/asset';
 
 export const MENU_ITEMS: MenuItem[] = [
   {
@@ -7,7 +8,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'cafes',
     description: 'A união sublime entre a cremosidade gelada do sorvete artesanal de creme e a intensidade quente do espresso 100% arábica extraído na hora.',
     price: 16,
-    image: '/avif/affogato.avif',
+    image: getAssetUrl('avif/affogato.avif'),
     badge: 'Mais Pedido da Estação',
     origin: 'Festival do Affogato Di Napoli',
     calories: '180 kcal',
@@ -20,7 +21,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'sobremesas',
     description: 'Generoso brownie de chocolate artesanal servido quentinho com uma bola do nosso gelato cremoso e irresistível calda de chocolate.',
     price: 22.9,
-    image: '/avif/sorvetecombrownie.avif',
+    image: getAssetUrl('avif/sorvetecombrownie.avif'),
     badge: 'Favorito dos Clientes',
     origin: 'Confeitaria Artesanal Di Napoli',
     calories: '380 kcal',
@@ -33,7 +34,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'cafes',
     description: 'Cacau nobre aveludado de textura cremosa e aveludada, coroado com marshmallows tostados ao maçarico na hora. Um abraço acolhedor inesquecível.',
     price: 21.5,
-    image: '/avif/chocolatequente.avif',
+    image: getAssetUrl('avif/chocolatequente.avif'),
     badge: 'Marshmallows Tostados',
     origin: 'Especial Di Napoli',
     calories: '240 kcal',
@@ -46,7 +47,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'sobremesas',
     description: 'Pão artesanal chapeado na manteiga com crosta dourada de açúcar e canela, servido quente com gelato de baunilha e calda morna especial.',
     price: 21.5,
-    image: '/avif/rabanada.avif',
+    image: getAssetUrl('avif/rabanada.avif'),
     badge: 'Sensação da Temporada',
     origin: 'Receita Artesanal',
     calories: '320 kcal',
@@ -59,7 +60,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'sobremesas',
     description: 'Nostálgica taça com generosas bolas de gelato artesanal da sua escolha, cobertas com calda especial, chantilly fresco aveludado, castanhas crocantes e cereja.',
     price: 22,
-    image: '/avif/colegial.avif',
+    image: getAssetUrl('avif/colegial.avif'),
     badge: 'Clássico da Casa',
     origin: 'Tradição Di Napoli',
     calories: '360 kcal',
@@ -72,7 +73,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'cafes',
     description: 'Espresso de grãos arábica selecionados com leite integral vaporizado em microespuma sedosa e lâminas de chocolate ao leite que derretem no copo.',
     price: 15,
-    image: '/avif/capuccinocremoso.avif',
+    image: getAssetUrl('avif/capuccinocremoso.avif'),
     badge: 'Microespuma Aveludada',
     origin: 'Preparo Clássico Italiano',
     calories: '140 kcal',
@@ -267,7 +268,7 @@ export const STORES: StoreLocation[] = [
     city: 'Leme, SP, 13610-220',
     phone: '(19) 3571-0000',
     hours: 'Seg a Dom: 10h às 22h',
-    image: '/avif/fotodinapoli.avif',
+    image: getAssetUrl('avif/fotodinapoli.avif'),
     fallbackImage: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80',
     mapsUrl: 'https://www.google.com/maps/dir//Sorveteria+e+Cafeteria+Di+Napoli,+R.+Dr.+Armando+Salles+Oliveira,+432+-+Centro,+Leme+-+SP,+13610-220/@-22.176314,-47.3604724,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94c80b99694e7d6f:0x3f1288c2955064f5!2m2!1d-47.3864197!2d-22.1854726?entry=ttu&g_ep=EgoyMDI2MDcyMC4wIKXMDSoASAFQAw%3D%3D',
   },

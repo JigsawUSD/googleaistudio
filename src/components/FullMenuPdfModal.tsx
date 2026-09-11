@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Download, Share2, FileText, Loader2 } from 'lucide-react';
 import * as pdfjsLib from 'pdfjs-dist';
+import { getAssetUrl } from '../utils/asset';
 // @ts-ignore
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
@@ -26,7 +27,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      loadPdf('/previafinal.pdf');
+      loadPdf(getAssetUrl('previafinal.pdf'));
     } else {
       document.body.style.overflow = '';
       pdfDocRef.current = null;
@@ -61,8 +62,9 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
       setLoading(false);
     } catch (err) {
       console.error('Error loading PDF:', err);
-      if (url !== '/cardapiofinal.pdf') {
-        loadPdf('/cardapiofinal.pdf');
+      const fallbackUrl = getAssetUrl('cardapiofinal.pdf');
+      if (url !== fallbackUrl) {
+        loadPdf(fallbackUrl);
       } else {
         setError('Não foi possível carregar o arquivo PDF.');
         setLoading(false);
@@ -173,7 +175,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
               <div className="my-auto py-16 text-center text-gray-600 px-6">
                 <p className="text-sm font-medium mb-4">{error}</p>
                 <a
-                  href="/previafinal.pdf"
+                  href={getAssetUrl('previafinal.pdf')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#942225] text-white text-xs font-bold shadow-md hover:bg-[#78181b] transition-all"
@@ -218,7 +220,7 @@ export const FullMenuPdfModal: React.FC<FullMenuPdfModalProps> = ({
           {/* Bottom Floating Action Bar */}
           <div className="p-4 bg-white border-t border-gray-100 flex items-center justify-between gap-3 shrink-0">
             <a
-              href="/previafinal.pdf"
+              href={getAssetUrl('previafinal.pdf')}
               download="cardapio_dinapoli.pdf"
               className="flex-1 max-w-[200px] sm:max-w-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#251918] hover:bg-[#942225] text-white text-xs font-bold transition-all shadow-md cursor-pointer"
             >
